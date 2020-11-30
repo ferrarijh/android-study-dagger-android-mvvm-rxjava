@@ -1,6 +1,13 @@
 # dagger-android for Android app with RxJava + LiveData + MVVM
 * [Google App Architecture Guide for networking](https://developer.android.com/jetpack/guide#addendum)
 
+## sealed class
+* Use case is similar with `enum` class - very useful with `when` expression.
+(official document [here](https://kotlinlang.org/docs/reference/sealed-classes.html))
+
+States related to network operations should be carefully managed. Using sealed class can be beneficial
+for concisely managing such states.
+
 ## Scoping
 * Annotate scope on top of Components, Subcomponents (along with methods and classes)
 * When using dagger-android and you have multiple activities, annotate scopes on top of
