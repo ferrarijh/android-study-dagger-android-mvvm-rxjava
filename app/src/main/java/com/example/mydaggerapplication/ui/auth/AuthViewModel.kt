@@ -4,8 +4,8 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.LiveDataReactiveStreams
 import androidx.lifecycle.ViewModel
-import com.example.mydaggerapplication.network.SessionManager
 import com.example.mydaggerapplication.di.annotation.AuthScope
+import com.example.mydaggerapplication.network.SessionManager
 import com.example.mydaggerapplication.network.AuthApi
 import com.example.mydaggerapplication.network.AuthResource
 import com.example.mydaggerapplication.user.User
@@ -36,7 +36,7 @@ class AuthViewModel @Inject constructor(
                             if(it.id == -1)
                                 AuthResource.Error(it, "Invalid user")
                             else
-                                AuthResource.LogIn(it)
+                                AuthResource.Login(it)
                         }
                         .subscribeOn(Schedulers.io())
         )

@@ -1,5 +1,6 @@
 package com.example.mydaggerapplication.ui.auth
 
+import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
@@ -7,12 +8,16 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.RequestManager
 import com.example.mydaggerapplication.databinding.ActivityAuthBinding
+import com.example.mydaggerapplication.di.annotation.AuthScope
 import com.example.mydaggerapplication.di.factory.ViewModelFactory
 import com.example.mydaggerapplication.network.AuthResource
+import com.example.mydaggerapplication.ui.dialog.LoadingDialog
+import com.example.mydaggerapplication.ui.main.MainActivity
 import com.example.mydaggerapplication.user.User
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
+@AuthScope
 class AuthActivity : DaggerAppCompatActivity(){
     companion object{
         const val TAG = "AuthActivity"
@@ -26,11 +31,33 @@ class AuthActivity : DaggerAppCompatActivity(){
 
     private val vBinding by lazy{ActivityAuthBinding.inflate(layoutInflater)}
 
-    private val loadingDialog by lazy{ LoadingDialog(this)}
+    private val loadingDialog by lazy{ LoadingDialog(this) }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d(TAG, "onStart()...")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG, "onResume()...")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(TAG, "onPause()...")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(TAG, "onStop()...")
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(vBinding.root)
+
+        Log.d(TAG, "onCreate()...")
 
 //        DaggerAppComponent.inject(this)   //you don't need this here anymore with dagger android
 
@@ -60,9 +87,10 @@ class AuthActivity : DaggerAppCompatActivity(){
                 is AuthResource.Loading<User> -> {
                     showLoadingDialog(true)
                 }
-                is AuthResource.LogIn<User> -> {
+                is AuthResource.Login<User> -> {
                     showLoadingDialog(false)
-                    Toast.makeText(this, "Authenticated with email [${it.data?.email}]", Toast.LENGTH_SHORT).show()
+                    onLoginSuccess()
+                    Toast.makeText(baseContext, "Authenticated with email [${it.data?.email}]", Toast.LENGTH_SHORT).show()
                 }
                 is AuthResource.Error<User> -> {
                     showLoadingDialog(false)
@@ -93,5 +121,11 @@ class AuthActivity : DaggerAppCompatActivity(){
             loadingDialog.show()
         else
             loadingDialog.dismiss()
+    }
+
+    private fun onLoginSuccess(){
+        val intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+        finish()
     }
 }

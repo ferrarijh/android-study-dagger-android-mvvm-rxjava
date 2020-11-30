@@ -1,4 +1,4 @@
-package com.example.mydaggerapplication.ui.auth
+package com.example.mydaggerapplication.ui.dialog
 
 import android.app.Dialog
 import android.content.Context
