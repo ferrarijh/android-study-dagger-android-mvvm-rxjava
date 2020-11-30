@@ -1,6 +1,7 @@
 package com.example.mydaggerapplication.di.component
 
 import android.app.Application
+import com.example.mydaggerapplication.network.SessionManager
 import com.example.mydaggerapplication.application.BaseApplication
 import com.example.mydaggerapplication.di.module.ActivityBuildersModule
 import com.example.mydaggerapplication.di.module.AppModule
@@ -23,6 +24,8 @@ import javax.inject.Singleton
 interface AppComponent: AndroidInjector<BaseApplication> {  //'BaseApplication' injected to 'AppComponent'
 
     //fun inject(activity: MainActivity)    //you don't need this anymore with dagger android
+
+    fun sessionManager(): SessionManager
 
     @Component.Factory
     interface Factory{
