@@ -61,8 +61,6 @@ class PostsFragment: DaggerFragment() {
                     is Resource.Success -> {
                         pAdapter.posts = it.data!!
                         loadingDialog.dismiss()
-                        Log.d(TAG, "list size: ${it.data.size}")
-                        Log.d(TAG, "adapter data size: ${pAdapter.posts.size}")
                     }
                     is Resource.Error -> Toast.makeText(context, "${it.message}", Toast.LENGTH_SHORT).show()
                 }
