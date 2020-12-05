@@ -7,6 +7,7 @@ import com.example.mydaggerapplication.R
 import com.example.mydaggerapplication.databinding.ActivityMainBinding
 import com.example.mydaggerapplication.di.annotation.MainScope
 import com.example.mydaggerapplication.ui.BaseActivity
+import com.example.mydaggerapplication.ui.main.posts.PostsFragment
 import com.example.mydaggerapplication.ui.main.profile.ProfileFragment
 
 @MainScope
@@ -37,7 +38,7 @@ class MainActivity: BaseActivity(){
 
     private fun setProfileFragment(){
         supportFragmentManager.beginTransaction()
-            .add(R.id.container_fragment, ProfileFragment())
+            .add(R.id.container_fragment, PostsFragment())
             .commit()
     }
 }

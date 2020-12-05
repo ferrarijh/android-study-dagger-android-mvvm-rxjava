@@ -2,8 +2,7 @@ package com.example.mydaggerapplication.network
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import com.example.mydaggerapplication.network.AuthResource
-import com.example.mydaggerapplication.user.User
+import com.example.mydaggerapplication.model.User
 import javax.inject.Inject
 import javax.inject.Singleton
 

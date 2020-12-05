@@ -10,11 +10,11 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class ActivityBuildersModule {
     @AuthScope
-    @ContributesAndroidInjector(modules=[AuthViewModelModule::class])
+    @ContributesAndroidInjector(modules=[AuthViewModelModule::class, AuthModule::class])
     abstract fun contributeAuthActivity(): AuthActivity
 
     //add additional activities here annotated with @ContributesAndroidInjector
     @MainScope
-    @ContributesAndroidInjector(modules=[FragmentBuildersModule::class, MainViewModelModule::class])
+    @ContributesAndroidInjector(modules=[FragmentBuildersModule::class, MainViewModelModule::class, MainModule::class])
     abstract fun contributeMainActivity(): MainActivity
 }

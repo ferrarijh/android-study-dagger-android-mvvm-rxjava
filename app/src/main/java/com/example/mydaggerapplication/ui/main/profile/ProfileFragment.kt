@@ -8,7 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.mydaggerapplication.databinding.FragmentProfileBinding
 import com.example.mydaggerapplication.di.factory.ViewModelFactory
 import com.example.mydaggerapplication.network.AuthResource
-import com.example.mydaggerapplication.user.User
+import com.example.mydaggerapplication.model.User
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 

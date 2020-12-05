@@ -5,7 +5,7 @@ import android.util.Log
 import com.example.mydaggerapplication.network.AuthResource
 import com.example.mydaggerapplication.network.SessionManager
 import com.example.mydaggerapplication.ui.auth.AuthActivity
-import com.example.mydaggerapplication.user.User
+import com.example.mydaggerapplication.model.User
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 

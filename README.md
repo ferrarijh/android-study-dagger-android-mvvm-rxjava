@@ -8,6 +8,10 @@
 States related to network operations should be carefully managed. Using sealed class can be beneficial
 for concisely managing such states.
 
+## Injecting Fragments
+
+
+
 ## Scoping
 * Annotate scope on top of Components, Subcomponents (along with methods and classes)
 * When using dagger-android and you have multiple activities, annotate scopes on top of
@@ -29,7 +33,7 @@ interface SingletonComponent{
 }
 ```
 
-and the modules respectively are:
+and the respective modules will look like:
 
 ```kotlin
 @Module
@@ -56,3 +60,6 @@ class IndirectClass(){
 ```
 
 ## Solved Issues
+
+## Unresolved
+* Not really necessary to scope ViewModel?

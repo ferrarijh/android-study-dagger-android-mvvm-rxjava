@@ -13,7 +13,7 @@ import com.example.mydaggerapplication.di.factory.ViewModelFactory
 import com.example.mydaggerapplication.network.AuthResource
 import com.example.mydaggerapplication.ui.dialog.LoadingDialog
 import com.example.mydaggerapplication.ui.main.MainActivity
-import com.example.mydaggerapplication.user.User
+import com.example.mydaggerapplication.model.User
 import dagger.android.support.DaggerAppCompatActivity
 import javax.inject.Inject
 
@@ -33,25 +33,25 @@ class AuthActivity : DaggerAppCompatActivity(){
 
     private val loadingDialog by lazy{ LoadingDialog(this) }
 
-    override fun onStart() {
-        super.onStart()
-        Log.d(TAG, "onStart()...")
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d(TAG, "onResume()...")
-    }
-
-    override fun onPause() {
-        super.onPause()
-        Log.d(TAG, "onPause()...")
-    }
-
-    override fun onStop() {
-        super.onStop()
-        Log.d(TAG, "onStop()...")
-    }
+//    override fun onStart() {
+//        super.onStart()
+//        Log.d(TAG, "onStart()...")
+//    }
+//
+//    override fun onResume() {
+//        super.onResume()
+//        Log.d(TAG, "onResume()...")
+//    }
+//
+//    override fun onPause() {
+//        super.onPause()
+//        Log.d(TAG, "onPause()...")
+//    }
+//
+//    override fun onStop() {
+//        super.onStop()
+//        Log.d(TAG, "onStop()...")
+//    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

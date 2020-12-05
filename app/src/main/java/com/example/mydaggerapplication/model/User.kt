@@ -1,4 +1,4 @@
-package com.example.mydaggerapplication.user
+package com.example.mydaggerapplication.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

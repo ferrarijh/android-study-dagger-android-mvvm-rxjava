@@ -8,11 +8,10 @@ import com.example.mydaggerapplication.di.annotation.AuthScope
 import com.example.mydaggerapplication.network.SessionManager
 import com.example.mydaggerapplication.network.AuthApi
 import com.example.mydaggerapplication.network.AuthResource
-import com.example.mydaggerapplication.user.User
+import com.example.mydaggerapplication.model.User
 import io.reactivex.rxjava3.schedulers.Schedulers
 import javax.inject.Inject
 
-@AuthScope
 class AuthViewModel @Inject constructor(
     val authApi: AuthApi,
     val sessionManager: SessionManager
@@ -21,11 +20,15 @@ class AuthViewModel @Inject constructor(
         const val TAG = "AuthViewModel"
     }
 
+    init{
+        Log.d(TAG, "$this")
+    }
+
     fun authenticateWithId(id: Int){
         sessionManager.authenticateWithId(queryUserId(id))
     }
 
-    fun queryUserId(id: Int): LiveData<AuthResource<User>> {
+    private fun queryUserId(id: Int): LiveData<AuthResource<User>> {
         return LiveDataReactiveStreams.fromPublisher(
                 authApi.getUser(id)
                         .onErrorReturn{
