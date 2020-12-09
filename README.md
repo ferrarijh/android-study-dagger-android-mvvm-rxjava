@@ -63,3 +63,23 @@ class IndirectClass(){
 
 ## Unresolved
 * Not really necessary to scope ViewModel?
+* In multi-binding, how `@MapKey` with value type `KClass<out ViewModel>` is interpreted to `Class<out ViewModel>`?
+
+ViewModelFactory.kt:
+```kotlin
+@Module
+class ViewModelFactory @Inject constructor(
+        val providerMap: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
+        ): ViewModelProvider.Factory
+```
+
+ViewModelKey.kt:
+```kotlin
+@Target(AnnotationTarget.FUNCTION)
+@Retention(AnnotationRetention.RUNTIME)
+@MapKey
+annotation class ViewModelKey(val value: KClass<out ViewModel>)
+```
+
+in `class ViewModelFactory`, `Map`'s value type is `Class<out ViewModel>` while in `class ViewModelKey`
+the key's type is `KClass<out ViewModel>`. How come this works?

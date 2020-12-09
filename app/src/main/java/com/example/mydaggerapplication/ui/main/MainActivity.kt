@@ -50,19 +50,9 @@ class MainActivity: BaseActivity(), NavigationView.OnNavigationItemSelectedListe
     }
 
     private fun setNavComponent(){
-        NavigationUI.setupActionBarWithNavController(this, navController, vBinding.drawerLayout)
-        NavigationUI.setupWithNavController(vBinding.navView, navController)
+        NavigationUI.setupActionBarWithNavController(this, navController, vBinding.drawerLayout)    //integrate home button with Nav Comps
+//        NavigationUI.setupWithNavController(vBinding.navView, navController)    //TODO("??")
         vBinding.navView.setNavigationItemSelectedListener(this)    //route to onNavigationItemSelected()
-    }
-
-    private fun setProfileFragment(){
-        supportFragmentManager.beginTransaction()
-            .add(R.id.container_fragment, ProfileFragment())
-            .commit()
-    }
-
-    private fun isValidDestination(id: Int): Boolean{
-        return id != navController.currentDestination!!.id
     }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -84,6 +74,10 @@ class MainActivity: BaseActivity(), NavigationView.OnNavigationItemSelectedListe
 
         vBinding.drawerLayout.close()
         return true
+    }
+
+    private fun isValidDestination(id: Int): Boolean{
+        return id != navController.currentDestination!!.id
     }
 
     override fun onSupportNavigateUp(): Boolean {
